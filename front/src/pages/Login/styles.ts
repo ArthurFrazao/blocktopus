@@ -36,6 +36,10 @@ export const Content = styled.div`
   align-items: flex-start;
   flex-direction: column;
 
+  h1 {
+    margin-bottom: 0.5rem;
+  }
+
   form {
     display: flex;
     flex-direction: column;

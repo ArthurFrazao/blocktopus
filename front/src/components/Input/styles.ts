@@ -2,6 +2,13 @@ import styled from 'styled-components'
 
 export const Container = styled.div`
   display: flex;
+  flex-direction: column;
+
+  gap: 1rem;
+`
+
+export const CustomInput = styled.div`
+  display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: flex-start;
@@ -10,7 +17,7 @@ export const Container = styled.div`
   width: 27.5rem;
   height: 4rem;
 
-  background: #b9b9bc;
+  background: #f5f5f7;
   border-radius: 0.5rem;
 
   > input {
@@ -18,16 +25,21 @@ export const Container = styled.div`
     height: 3rem;
 
     border: none;
-    background: #b9b9bc;
+    background: #f5f5f7;
     font-size: 1rem;
   }
 
   input:focus {
     outline: none;
-    background: #b9b9bc;
+    background: #f5f5f7;
   }
 
   @media (max-width: 768px) {
     width: 20rem;
   }
+`
+
+export const HelperText = styled.div`
+  font-size: 0.8rem;
+  color: #d84141;
 `
