@@ -1,5 +1,4 @@
 import { InputHTMLAttributes } from 'react'
-import { Keyhole } from '@phosphor-icons/react'
 
 import { Container, CustomInput, HelperText } from './styles'
 
@@ -13,8 +12,6 @@ export function Input({ name, helperText, ...rest }: InputProps) {
     <Container>
       <CustomInput>
         <label htmlFor={name}></label>
-
-        <Keyhole size={32} color="#b9b9bc" />
         <input id={name} {...rest} />
       </CustomInput>
 

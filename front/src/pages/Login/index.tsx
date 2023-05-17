@@ -1,6 +1,5 @@
-import { useForm } from 'react-hook-form'
-import { z } from 'zod'
-import { zodResolver } from '@hookform/resolvers/zod'
+import { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 
 import { CaretRight } from '@phosphor-icons/react'
 
@@ -9,30 +8,20 @@ import { Input } from '../../components/Input'
 
 import { Container, BackgroundImage, Content, BtnLogin } from './styles'
 
-const schema = z.object({
-  password: z.string().min(3, {
-    message: 'Sua senha ou token devem conter no mínimo 6 caracteres.'
-  })
-})
-
-type FormProps = z.infer<typeof schema>
-
 export function Login() {
-  const {
-    handleSubmit,
-    register,
-    formState: { errors }
-  } = useForm<FormProps>({
-    mode: 'all',
-    criteriaMode: 'all',
-    resolver: zodResolver(schema),
-    defaultValues: {
-      password: ''
-    }
-  })
+  const navigate = useNavigate()
 
-  const handleForm = (data: FormProps) => {
-    console.log({ data })
+  const [token, setToken] = useState('')
+  const [isError, setIsError] = useState(false)
+
+  function handleValueChange(event: React.ChangeEvent<HTMLInputElement>) {
+    setToken(event.target.value)
+  }
+
+  function handleLogin(event: React.FormEvent<HTMLFormElement>) {
+    event?.preventDefault()
+
+    token === '12345' ? navigate('/server-status') : setIsError(true)
   }
 
   return (
@@ -43,12 +32,14 @@ export function Login() {
         <h1>Login</h1>
         <span>Bem vindo(a) de volta!</span>
 
-        <form onSubmit={handleSubmit(handleForm)}>
+        <form onSubmit={handleLogin}>
           <Input
-            {...register('password')}
+            name="token"
             type="text"
             placeholder="Digite o seu token ou senha"
-            helperText={errors.password?.message}
+            helperText={isError ? 'Token ou senha inválidos' : ''}
+            value={token}
+            onChange={handleValueChange}
           />
           <Button type="submit">
             <BtnLogin>

@@ -4,13 +4,15 @@ export const Container = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-`
 
-export const Main = styled.div`
   width: 100%;
-  max-width: 1440px;
 
-  margin-top: 5rem;
+  margin-top: 3rem;
 
-  padding: 0 2.5rem;
+  transition: opacity 0.3s ease-in-out;
+
+  button {
+    padding: 0.5rem 3rem;
+    align-self: end;
+  }
 `
