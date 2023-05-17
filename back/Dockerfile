@@ -1,7 +1,7 @@
 FROM python:3.10-slim
 
 ENV PYTHONUNBUFFERED True
-ENV PROJECT_ID symmetric-stage-38470
+ENV PROJECT_ID symmetric-stage-384701
 ENV REGION us-central1-a
 
 ENV APP_HOME /app
