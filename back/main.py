@@ -15,7 +15,7 @@ instance_name = "minecraft-server"
 project = os.getenv("PROJECT_ID")
 region = os.getenv("REGION")
 
-@app.route("/online-server", methods=["GET"])
+@app.route("/online-server", methods=["POST"])
 def start_server():
     """ Starts a stopped Google Compute Engine instance """
     try:
@@ -27,11 +27,11 @@ def start_server():
         wait_for_extended_operation(operation, "instance start")
         print(f"Instance {instance_name} started", flush=True)
 
-        return jsonify({"message": "Minecraft Server are starting"}), 200
+        return jsonify({"message": "Minecraft Server are started."}), 200
     except:
         pass 
     
-@app.route("/offline-server", methods=["GET"])
+@app.route("/offline-server", methods=["POST"])
 def stop_server():
     """ Stops a running Google Compute Engine instance """
     try:
@@ -43,7 +43,7 @@ def stop_server():
         wait_for_extended_operation(operation, "instance stopping")
         print(f"Instance {instance_name} stopped", flush=True)
 
-        return jsonify({"message": "Minecraft Server are stopping"}), 200
+        return jsonify({"message": "Minecraft Server are stopped."}), 200
     except:
         pass 
 
